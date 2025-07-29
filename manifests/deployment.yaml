@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cakephp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cakephp
+  template:
+    metadata:
+      labels:
+        app: cakephp
+    spec:
+      containers:
+        - name: cakephp
+          image: shinsenter/cakephp5:latest
+          ports:
+            - containerPort: 80
+          env:
+            # Example ENV; customize based on your app's needs
+            - name: APP_NAME
+              value: "CakePHP App"
+
